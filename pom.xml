@@ -45,6 +45,7 @@
 		<module>myasso-base/myasso-cloud-chassis</module>
 		<module>myasso-base/myasso-service-chassis</module>
 		<module>myasso-common/myasso-utils</module>
+		<module>myasso-services/myasso-association-service</module>
 	</modules>
 
 
