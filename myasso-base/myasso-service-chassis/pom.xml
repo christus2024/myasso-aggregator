@@ -21,6 +21,14 @@
     </properties>
 
     <dependencies>
+        <!-- Start - Store application business dependencies -->
+        <dependency>
+            <groupId>fr.it4innov.myasso</groupId>
+            <artifactId>myasso-utils</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!-- End - Store application business dependencies -->
+
         <!-- Start - Spring cloud Eureka service discovery client -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
