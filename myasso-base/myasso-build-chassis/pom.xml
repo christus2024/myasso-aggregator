@@ -29,6 +29,9 @@
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <org.lombok.version>1.18.30</org.lombok.version>
         <spring.cloud.version>2023.0.3</spring.cloud.version>
+        <skipTests>false</skipTests>
+        <skipUnitTests>${skipTests}</skipUnitTests>
+        <skipIntegrationTests>${skipTests}</skipIntegrationTests>
     </properties>
 
     <dependencyManagement>
@@ -131,7 +134,7 @@
     </dependencies>
 
     <build>
-        <pluginManagement>
+        <pluginManagement> <!-- pluginManagement permet de fournir une configuration commune de plugins à tous les projet heritant de ce pom -->
             <plugins>
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
@@ -174,6 +177,84 @@
                                 -Amapstruct.unmappedTargetPolicy=IGNORE
                             </compilerArg>
                         </compilerArgs>
+                    </configuration>
+                </plugin>
+                <!--Plugin pour la generation des rapports de tests-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <configuration>
+                        <includes>
+                            <include>**/*IT.java</include>
+                        </includes>
+                        <skipTests>${skipIntegrationTests}</skipTests>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>integration-test</goal>
+                                <goal>verify</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.8.2</version>
+                    <configuration>
+                        <excludes>
+                            <exclude>**/config/*</exclude>
+                            <exclude>**/util/*</exclude>
+                        </excludes>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <!-- attached to Maven test phase -->
+                        <execution>
+                            <id>report</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>com.lazerycode.jmeter</groupId>
+                    <artifactId>jmeter-maven-plugin</artifactId>
+                    <version>3.6.0</version>
+                    <executions>
+                        <!-- Generate JMeter configuration -->
+                        <execution>
+                            <id>configuration</id>
+                            <goals>
+                                <goal>configure</goal>
+                            </goals>
+                        </execution>
+                        <!-- Run JMeter tests -->
+                        <execution>
+                            <id>jmeter-tests</id>
+                            <goals>
+                                <goal>jmeter</goal>
+                            </goals>
+                        </execution>
+                        <!-- Fail build on errors in test -->
+                        <execution>
+                            <id>jmeter-check-results</id>
+                            <goals>
+                                <goal>results</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <testFilesDirectory>${project.basedir}/src/main/resources/jmeter/sources</testFilesDirectory>
+                        <resultsDirectory>${project.basedir}/src/main/resources/jmeter/results</resultsDirectory>
+                        <errorRateThresholdInPercent>10</errorRateThresholdInPercent>
                     </configuration>
                 </plugin>
             </plugins>
