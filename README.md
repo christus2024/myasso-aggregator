@@ -8,7 +8,8 @@
 
 ```
 Myasso-aggregator--> Repertoire parent. 
-|- config --> Tous les fichiers de configurations gérés par spring-cloud-config 
+|- config --> Tous les fichiers de configurations gérés par spring-cloud-config
+  |- .m2 -->  le dossier contenant le fichier settings.xml permetant de configurer l'accès au repo nexus et au serveur sonarqube
 |- docs --> Toutes documentations et  diagrammes associés. 
 |- myasso-base 
   |- myasso-build-chassis --> Super POM Parent, contenant les informations de build
@@ -35,3 +36,6 @@ Myasso-aggregator--> Repertoire parent.
 
 ### Initialisation du repo
     git flow init
+
+--Mettre en place un hook git de pre-commit pour verifier et interdir le commit de secret
+----autoriser uniquement les secrets dans un fichier vault chiffré(utiliser ansible-vault, ou mozilla vault ou gitcript, git-secret, passwordstore).

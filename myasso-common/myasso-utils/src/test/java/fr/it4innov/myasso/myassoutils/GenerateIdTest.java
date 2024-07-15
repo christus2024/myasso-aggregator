@@ -10,7 +10,7 @@ class GenerateIdTest {
 
     @Test
     public void shouldGenerateId(){
-        String generatedId = GenerateId.generateId("Association");
+        String generatedId = IdGenerator.generateId("Association");
         log.info("generatedId : {}", generatedId);
         assertTrue(generatedId.contains("ASSOCIATION"));
     }
