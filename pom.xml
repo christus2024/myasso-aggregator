@@ -34,6 +34,19 @@
 		<tag/>
 		<url/>
 	</scm>
+	<!-- Permet de definir ou nos artefacts seront poussés lors du deploy
+	<distributionManagement>
+		<snapshotRepository>
+			<id>myasso-snapshots</id>
+			<name>snapshots myasso</name>
+			<url>https://nexus.it4innov.fr/repository/myasso-maven-snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>myasso-releases</id>
+			<name>Releases myasso</name>
+			<url>https://nexus.it4innov.fr/repository/myasso-maven-releases/</url>
+		</repository>
+	</distributionManagement>-->
 
 	<properties>
 		<maven.install.skip>true</maven.install.skip>
