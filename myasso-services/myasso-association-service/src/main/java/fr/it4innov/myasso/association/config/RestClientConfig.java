@@ -4,7 +4,7 @@ import fr.it4innov.myasso.association.service.MembreService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.ClientHttpRequestFactories;
 import org.springframework.boot.web.client.ClientHttpRequestFactorySettings;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+//import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.MethodParameter;
@@ -26,13 +26,13 @@ public class RestClientConfig {
 
     @Value("${myasso.membre-service}")
     private String membreServiceUrl;
-    @LoadBalanced
+   // @LoadBalanced
     @Bean
     RestClient.Builder restClientBuilder() {
         return RestClient.builder();
     }
     @Bean
-    public RestClient membreServiceRestClient(@LoadBalanced RestClient.Builder restClientBuilder) {
+    public RestClient membreServiceRestClient(/*@LoadBalanced*/ RestClient.Builder restClientBuilder) {
         return this.createRestClient(restClientBuilder, membreServiceUrl);
     }
 
@@ -40,7 +40,7 @@ public class RestClientConfig {
     public MembreService membreService(RestClient membreServiceRestClient) {
         return httpServiceProxyFactory(membreServiceRestClient).createClient(MembreService.class);
     }
-    private RestClient createRestClient(@LoadBalanced RestClient.Builder restClientBuilder, String baseUrl) {
+    private RestClient createRestClient(/*@LoadBalanced*/ RestClient.Builder restClientBuilder, String baseUrl) {
         ClientHttpRequestFactorySettings requestFactorySettings = ClientHttpRequestFactorySettings.DEFAULTS
                 .withConnectTimeout(Duration.ofSeconds(30))
                 .withReadTimeout(Duration.ofSeconds(30));

@@ -1,4 +1,4 @@
-package fr.it4innov.myasso.association.domaine.dto;
+package fr.it4innov.myasso.association.client.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;

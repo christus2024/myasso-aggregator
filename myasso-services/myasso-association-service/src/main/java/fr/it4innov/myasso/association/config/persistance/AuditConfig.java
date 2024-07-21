@@ -12,19 +12,24 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import java.util.Optional;
 
 @Configuration
-@EnableJpaAuditing
+@EnableJpaAuditing(auditorAwareRef ="auditorAwareImpl")
 public class AuditConfig {
 
     @Bean
-    public AuditorAware<String> auditorProvider() {
+    public AuditorAware<String> auditorAwareImpl() {
         return new AuditorAwareImpl();
     }
 
-    public static class AuditorAwareImpl implements AuditorAware<String> {
+    /**
+     * Cette classe permet de recuperer l'utilisateur courant qui va effectuer
+     * une operation sur une entité. Elle est utilisée par la classe AuditingEntityListener
+     * pour setter les attributs createdBy et lastModifiedBy
+     */
+    public  class AuditorAwareImpl implements AuditorAware<String> {
         @Override
         public Optional<String> getCurrentAuditor() {
             // Retourner l'utilisateur actuel (ex. : à partir de Spring Security)
-            return Optional.of("current_user");
+            return Optional.of("ACCOUNT_MS");
         }
     }
 }

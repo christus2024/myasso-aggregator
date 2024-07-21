@@ -1,6 +1,7 @@
 package fr.it4innov.myasso.association.service;
+import fr.it4innov.myasso.association.client.dto.AssociationDTO;
+import fr.it4innov.myasso.association.client.dto.CreerAssociationDTO;
 import fr.it4innov.myasso.association.domaine.Association;
-import fr.it4innov.myasso.association.domaine.dto.AssociationDTO;
 import fr.it4innov.myasso.association.exception.DataAlreadyExistException;
 import fr.it4innov.myasso.association.exception.DataNotFoundException;
 import fr.it4innov.myasso.association.repository.AssociationRepository;
@@ -28,9 +29,9 @@ public class AssociationServiceImpl implements AssociationService{
     private final AssociationMapper associationMapper;
 
     @Override
-    public AssociationDTO createAssociation(AssociationDTO associationDTO ) {
+    public AssociationDTO createAssociation(CreerAssociationDTO associationDTO ) {
         //verifier si l'association existe
-        if ( associationDTO.getId() != null )
+        if ( associationRepository.findOneByDenomination(associationDTO.getDenomination()).isPresent())
             throw new DataAlreadyExistException("L'association existe deja");
         Association association = associationMapper.toEntity(associationDTO);
         return associationMapper.toDto(associationRepository.save(association));

@@ -22,7 +22,7 @@ import java.time.LocalDate;
 @Entity
 public class DocumentAssociation extends AbstractAuditingEntity implements Identifiable {
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, updatable = false)
     private String codeDocument;
     private String libele;
     private String description;

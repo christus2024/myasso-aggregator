@@ -1,7 +1,6 @@
-package fr.it4innov.myasso.association.domaine.dto;
+package fr.it4innov.myasso.association.client.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import fr.it4innov.myasso.association.domaine.StatutExercice;
 import lombok.*;
 
 import java.time.LocalDate;

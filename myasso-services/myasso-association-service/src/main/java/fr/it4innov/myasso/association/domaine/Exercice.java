@@ -1,5 +1,6 @@
 package fr.it4innov.myasso.association.domaine;
 
+import fr.it4innov.myasso.association.client.dto.StatutExercice;
 import fr.it4innov.myasso.association.config.persistance.AbstractAuditingEntity;
 import fr.it4innov.myasso.association.config.persistance.CustomIdEntityListener;
 import fr.it4innov.myasso.association.config.persistance.Identifiable;
@@ -20,12 +21,13 @@ import java.time.LocalDate;
 @EntityListeners(CustomIdEntityListener.class)
 @Entity
 public class Exercice extends AbstractAuditingEntity implements Identifiable {
-    @Column(unique = true, nullable = false)
+
+    @Column(unique = true, nullable = false, updatable = false)
     private String codeExercice;
     private String libele;
     private String observation;
     @Builder.Default
-    private LocalDate dateDebut = LocalDate.now();
+    private LocalDate dateDebut;
     private String dateFin;
     @Enumerated( EnumType.STRING)
     private StatutExercice statutExercice;

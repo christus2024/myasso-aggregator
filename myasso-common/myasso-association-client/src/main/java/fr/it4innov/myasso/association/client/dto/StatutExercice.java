@@ -1,4 +1,4 @@
-package fr.it4innov.myasso.association.domaine;
+package fr.it4innov.myasso.association.client.dto;
 
 import lombok.Getter;
 

@@ -1,7 +1,7 @@
 package fr.it4innov.myasso.association.service.mapper;
 
+import fr.it4innov.myasso.association.client.dto.DocumentAssociationDTO;
 import fr.it4innov.myasso.association.domaine.DocumentAssociation;
-import fr.it4innov.myasso.association.domaine.dto.DocumentAssociationDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

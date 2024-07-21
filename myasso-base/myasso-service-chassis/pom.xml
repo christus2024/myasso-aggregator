@@ -16,30 +16,34 @@
     <description>myasso-service-chassis</description>
    <packaging>pom</packaging>
 
-    <properties>
-        <java.version>22</java.version>
-    </properties>
-
     <dependencies>
         <!-- Start - Store application business dependencies -->
         <dependency>
             <groupId>fr.it4innov.myasso</groupId>
             <artifactId>myasso-utils</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>fr.it4innov.myasso</groupId>
+            <artifactId>myasso-association-client</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <!-- End - Store application business dependencies -->
-
-        <!-- Start - Spring cloud Eureka service discovery client -->
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- Start - Spring cloud Eureka service discovery client -->
+       <!-- <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-        <!-- End - Spring cloud Eureka service discovery client -->
-        <!-- Start - Cloud config server dependencies -->
+        &lt;!&ndash; End - Spring cloud Eureka service discovery client &ndash;&gt;
+        &lt;!&ndash; Start - Cloud config server dependencies &ndash;&gt;
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework.retry</groupId>
             <artifactId>spring-retry</artifactId>

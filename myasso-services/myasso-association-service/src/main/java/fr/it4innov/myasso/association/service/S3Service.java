@@ -24,13 +24,16 @@ import java.util.Date;
  * @Date 06/06/2024
  */
 @Slf4j
-@RequiredArgsConstructor
 @Service
 public class S3Service {
     private final AmazonS3 s3client;
 
     @Value("${aws.s3.bucket}")
     private String bucketName;
+
+    public S3Service(AmazonS3 s3client) {
+        this.s3client = s3client;
+    }
 
 
     public String uploadFile(MultipartFile file)  {

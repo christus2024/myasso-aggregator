@@ -18,12 +18,15 @@ import java.io.IOException;
  * @Date 06/06/2024
  */
 @Slf4j
-@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/s3")
 public class S3Controller {
 
     private final S3Service s3Service;
+
+    public S3Controller(S3Service s3Service) {
+        this.s3Service = s3Service;
+    }
 
     @PostMapping(path = "/upload", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE})
     public String uploadFile(@RequestParam("file") MultipartFile file) throws IOException {

@@ -1,7 +1,7 @@
 package fr.it4innov.myasso.association.service.mapper;
 
+import fr.it4innov.myasso.association.client.dto.ContactDTO;
 import fr.it4innov.myasso.association.domaine.Contact;
-import fr.it4innov.myasso.association.domaine.dto.ContactDTO;
 import org.mapstruct.Mapper;
 
 /**

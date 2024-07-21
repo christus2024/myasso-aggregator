@@ -10,11 +10,11 @@ import lombok.Setter;
  * @author Christus TCHASSI
  * @Date 03/06/2024
  */
-@Embeddable
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Embeddable
 public class Adresse {
 
     private String adresse;

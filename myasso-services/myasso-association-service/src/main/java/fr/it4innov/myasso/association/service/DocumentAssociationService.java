@@ -1,6 +1,6 @@
 package fr.it4innov.myasso.association.service;
 
-import fr.it4innov.myasso.association.domaine.dto.DocumentAssociationDTO;
+import fr.it4innov.myasso.association.client.dto.DocumentAssociationDTO;
 
 import java.nio.file.Path;
 import java.util.List;

@@ -1,6 +1,7 @@
 package fr.it4innov.myasso.association.controller;
 
-import fr.it4innov.myasso.association.domaine.dto.DocumentAssociationDTO;
+import fr.it4innov.myasso.association.client.RestEndpoint.DocumentAssociationEndpoint;
+import fr.it4innov.myasso.association.client.dto.DocumentAssociationDTO;
 import fr.it4innov.myasso.association.service.DocumentAssociationService;
 import fr.it4innov.myasso.association.service.ImportFichierService;
 import jakarta.validation.constraints.NotNull;
@@ -17,18 +18,23 @@ import java.util.List;
  * @Date 03/06/2024
  */
 @RestController
-@AllArgsConstructor
 @RequestMapping("/document")
-public class DocumentAssociationController {
+public class DocumentAssociationController  {
 
     private final DocumentAssociationService documentAssociationService;
     private final ImportFichierService importFichierService;
+
+    public DocumentAssociationController(DocumentAssociationService documentAssociationService, ImportFichierService importFichierService) {
+        this.documentAssociationService = documentAssociationService;
+        this.importFichierService = importFichierService;
+    }
+
     @PostMapping( value = "/imports" )
     public ResponseEntity< Void > importFiles( @PathVariable( "category" ) @NotNull final String category,
                                                @PathVariable( "libele" ) @NotNull final String libele,
                                                @PathVariable( "description" ) @NotNull final String description,
                                                @RequestParam(name = "files") MultipartFile[] multipartFile) {
-        List<Path> listPath = importFichierService.importFiles( category, multipartFile ); // TODO a tester
+        List<Path> listPath = importFichierService.importFiles( category, multipartFile );
         documentAssociationService.saveDocument(libele, category, description, listPath);
 
         return ResponseEntity.noContent().build();

@@ -1,5 +1,7 @@
 package fr.it4innov.myasso.association.domaine;
 
+import fr.it4innov.myasso.association.client.dto.Langue;
+import fr.it4innov.myasso.association.client.dto.Monaie;
 import fr.it4innov.myasso.association.config.persistance.AbstractAuditingEntity;
 import fr.it4innov.myasso.association.config.persistance.CustomIdEntityListener;
 import fr.it4innov.myasso.association.config.persistance.Identifiable;
@@ -28,13 +30,15 @@ import java.util.List;
 @EntityListeners(CustomIdEntityListener.class)
 @DynamicUpdate
 @SoftDelete(columnName = "deleted")
-@SQLDelete(sql = "UPDATE table_product SET deleted = true WHERE id=?")
+//@SQLDelete(sql = "UPDATE table_product SET deleted = true WHERE id=?")
 @Where(clause = "deleted=false")
 @Entity
 public class Association extends AbstractAuditingEntity implements Identifiable {
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, updatable = false)
     private String codeAssociation;
+    @NotNull
+    private String codeSuperAdmin;
     @NotNull
     private String denomination ;
     private String slogan;
@@ -74,8 +78,9 @@ public class Association extends AbstractAuditingEntity implements Identifiable 
     private List<DocumentAssociation> listDocumentAssociation;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "association")
     private  List<Exercice> listExercice;
-    @Column(insertable=false)
-    private boolean deleted ;
+
+    /*@Column(insertable=false)
+    private boolean deleted ;*/
 
     @Override
     public void setCustomId(String customId) {

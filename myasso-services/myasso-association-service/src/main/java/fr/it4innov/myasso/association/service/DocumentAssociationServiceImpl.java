@@ -1,7 +1,7 @@
 package fr.it4innov.myasso.association.service;
 
+import fr.it4innov.myasso.association.client.dto.DocumentAssociationDTO;
 import fr.it4innov.myasso.association.domaine.DocumentAssociation;
-import fr.it4innov.myasso.association.domaine.dto.DocumentAssociationDTO;
 import fr.it4innov.myasso.association.repository.DocumentAssociationRepository;
 import fr.it4innov.myasso.association.service.mapper.DocumentAssociationMapper;
 import lombok.AllArgsConstructor;

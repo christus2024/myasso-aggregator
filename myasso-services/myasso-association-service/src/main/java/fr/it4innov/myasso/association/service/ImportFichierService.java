@@ -23,7 +23,6 @@ import java.util.List;
  * @Date 06/06/2024
  */
 @Slf4j
-@RequiredArgsConstructor
 @Service
 public class ImportFichierService {
 

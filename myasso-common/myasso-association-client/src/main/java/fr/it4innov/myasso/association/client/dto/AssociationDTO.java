@@ -1,8 +1,6 @@
-package fr.it4innov.myasso.association.domaine.dto;
+package fr.it4innov.myasso.association.client.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import fr.it4innov.myasso.association.domaine.Langue;
-import fr.it4innov.myasso.association.domaine.Monaie;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -26,6 +24,8 @@ public class AssociationDTO {
     private Long id;
     @NotNull
     private String codeAssociation;
+    @NotNull
+    private String codeSuperAdmin;
     @NotNull
     private String denomination ;
     private String slogan;

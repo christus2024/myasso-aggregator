@@ -1,6 +1,7 @@
 package fr.it4innov.myasso.association.service;
 
-import fr.it4innov.myasso.association.domaine.dto.AssociationDTO;
+import fr.it4innov.myasso.association.client.dto.AssociationDTO;
+import fr.it4innov.myasso.association.client.dto.CreerAssociationDTO;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  */
 public interface AssociationService {
 
-    public AssociationDTO createAssociation(AssociationDTO association );
+    public AssociationDTO createAssociation(CreerAssociationDTO association );
 
     public AssociationDTO updateAssociation( AssociationDTO updateAssociationDTO );
 

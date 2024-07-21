@@ -1,6 +1,8 @@
 package fr.it4innov.myasso.association.controller;
 
-import fr.it4innov.myasso.association.domaine.dto.AssociationDTO;
+import fr.it4innov.myasso.association.client.RestEndpoint.AssociationEndpoint;
+import fr.it4innov.myasso.association.client.dto.AssociationDTO;
+import fr.it4innov.myasso.association.client.dto.CreerAssociationDTO;
 import fr.it4innov.myasso.association.service.AssociationService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,17 +16,21 @@ import java.util.List;
  * @Date 03/06/2024
  */
 @RestController
-@AllArgsConstructor
 @RequestMapping("/association")
-public class AssociationController {
+public class AssociationController  {
 
     private final AssociationService associationService;
+
+    public AssociationController(AssociationService associationService) {
+        this.associationService = associationService;
+    }
+
     @PostMapping
-    public ResponseEntity<AssociationDTO>  create(@RequestBody AssociationDTO association ){
+    public ResponseEntity<AssociationDTO>  create(@RequestBody CreerAssociationDTO nouvelleAssociation ){
 
         return ResponseEntity
                 .status( HttpStatus.CREATED )
-                .body( associationService.createAssociation( association ) );
+                .body( associationService.createAssociation( nouvelleAssociation ) );
     }
     @PutMapping
     public ResponseEntity<AssociationDTO>  update( @RequestBody AssociationDTO updateAssociationDTO ){
