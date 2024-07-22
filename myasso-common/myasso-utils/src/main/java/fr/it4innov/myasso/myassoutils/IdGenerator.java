@@ -7,7 +7,7 @@ import java.util.Locale;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Slf4j
-public class GenerateId {
+public class IdGenerator {
 
     public static String generateId(String entityName){
         int min = 50; // Minimum value of range

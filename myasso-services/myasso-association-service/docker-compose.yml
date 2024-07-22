@@ -1,0 +1,21 @@
+services:
+  myasso-association:
+    image: myasso-association-service:1.0.0-SNAPSHOT
+    container_name: myasso-association-service
+    ports:
+      - 8082:8082
+    deploy:
+      resources:
+        limits:
+          memory: 500m
+          cpus: 0.5
+        reservations:
+          cpus: '0.0001'
+          memory: 20M
+    networks:
+      - it4innov
+
+networks:
+  it4innov:
+    driver: bridge
+
