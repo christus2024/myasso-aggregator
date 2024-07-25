@@ -26,7 +26,6 @@ public class Exercice extends AbstractAuditingEntity implements Identifiable {
     private String codeExercice;
     private String libele;
     private String observation;
-    @Builder.Default
     private LocalDate dateDebut;
     private String dateFin;
     @Enumerated( EnumType.STRING)
